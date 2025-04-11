@@ -435,7 +435,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     }
     
     func configurAudioSession(){
-        if data?.configureAudioSession != false {
+        if data?.configureAudioSession == true {
             let session = AVAudioSession.sharedInstance()
             do{
                 try session.setCategory(AVAudioSession.Category.playAndRecord, options: [
