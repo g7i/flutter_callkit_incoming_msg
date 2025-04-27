@@ -120,10 +120,15 @@ class CallkitIncomingActivity : Activity() {
 
         val pm = applicationContext.getSystemService(POWER_SERVICE) as PowerManager
         val wakeLock = pm.newWakeLock(
-                PowerManager.SCREEN_BRIGHT_WAKE_LOCK or PowerManager.FULL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP,
-                "Callkit:PowerManager"
+            PowerManager.SCREEN_BRIGHT_WAKE_LOCK or PowerManager.FULL_WAKE_LOCK or PowerManager.ACQUIRE_CAUSES_WAKEUP or PowerManager.ON_AFTER_RELEASE,
+            "Callkit:PowerManager"
         )
         wakeLock.acquire(duration)
+        val wakeLock_cpu = pm.newWakeLock(
+            PowerManager.PARTIAL_WAKE_LOCK,
+            "Callkit:PowerManager"
+        )
+        wakeLock_cpu.acquire(duration)
     }
 
     private fun transparentStatusAndNavigation() {

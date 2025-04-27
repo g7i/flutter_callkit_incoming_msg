@@ -411,7 +411,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
             CXHandle.HandleType.generic
         ]
         if #available(iOS 11.0, *) {
-            configuration.includesCallsInRecents = false
+            configuration.includesCallsInRecents = data.includesCallsInRecents
         }
         if !data.iconName.isEmpty {
             if let image = UIImage(named: data.iconName) {
@@ -435,7 +435,7 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
     }
     
     func configurAudioSession(){
-        if data?.configureAudioSession != false {
+        if data?.configureAudioSession == true {
             let session = AVAudioSession.sharedInstance()
             do{
                 try session.setCategory(AVAudioSession.Category.playAndRecord, options: [
