@@ -501,13 +501,8 @@ public class SwiftFlutterCallkitIncomingPlugin: NSObject, FlutterPlugin, CXProvi
         NotificationCenter.default.post(name: AVAudioSession.interruptionNotification, object: self, userInfo: userInfo)
     }
     
-<<<<<<< HEAD
     func configurAudioSession(){
         if data?.configureAudioSession == true {
-=======
-    func configureAudioSession(){
-        if data?.configureAudioSession != false {
->>>>>>> origin/master
             let session = AVAudioSession.sharedInstance()
             do{
                 try session.setCategory(AVAudioSession.Category.playAndRecord, options: [
